@@ -18,7 +18,15 @@ import Foundation
 
 public func solution(_ A : [String], _ B : [String], _ P : String) -> String {
     // do your work here
-    return ""
+    var result: String?
+    for (index, item) in B.enumerated() {
+        if item.contains(P) {
+            let prevItem = result ?? A[index]
+            result = min(prevItem, A[index])
+        }
+    }
+        
+    return result ?? "NO CONTACT"
 }
 
 let A = ["pim", "pom"]

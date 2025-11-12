@@ -23,8 +23,29 @@ import UIKit
  
  */
 func solution(_ S : String) -> String {
-    // do your work here
-    return ""
+    let numericString = S.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
+    var formattedNumber = ""
+    var charCount = 0
+    
+    for i in numericString {
+        if charCount == 3 {
+            formattedNumber.append("-")
+            charCount = 0
+        }
+        
+        formattedNumber.append(i)
+        charCount += 1
+    }
+    
+    if numericString.count > 1,
+       numericString.count % 3 == 1 {
+        let lastIndex = numericString.index(before: numericString.endIndex)
+        let beforeLastIndex = numericString.index(before: lastIndex)
+        formattedNumber = String(formattedNumber.dropLast(3))
+        formattedNumber.append("-\(numericString[beforeLastIndex])\(numericString[lastIndex])")
+    }
+    
+    return formattedNumber
 }
 
 solution("123456789")           // 123-456-789

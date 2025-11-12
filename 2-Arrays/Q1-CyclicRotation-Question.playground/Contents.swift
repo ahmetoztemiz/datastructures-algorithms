@@ -18,7 +18,12 @@ import UIKit
 
 func solution(A: [Int], K: Int) -> [Int] {
     // do your work here...
-    return [Int]()
+    var reverseIndex = A.count - K
+    if A.count == K, K == 0 {
+        return A
+    }
+    
+    return Array(A[reverseIndex..<A.count] + A[0..<reverseIndex])
 }
 
 solution(A: [1, 2, 3, 4, 5], K: 1) // 5 1 2 3 4
@@ -26,4 +31,3 @@ solution(A: [1, 2, 3, 4, 5], K: 2) // 4 5 1 2 3
 solution(A: [1, 2, 3, 4, 5], K: 3) // 3 4 5 1 2
 
 solution(A: [3, 8, 9, 7, 6], K: 3) // [9, 7, 6, 3, 8]
-
