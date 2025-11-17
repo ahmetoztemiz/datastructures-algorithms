@@ -24,8 +24,34 @@ class Node {
     }
 }
 
+func hasCycleWithDict(first: Node) -> Bool {
+    var visitedNodes: [Int: Bool] = [:]
+    var node = first
+    
+    while node.next != nil {
+        visitedNodes[node.data] = true
+        node = node.next!
+        if visitedNodes[node.data] == true {
+            print(node.data)
+            return true
+        }
+    }
+    
+    return false
+}
+
 func hasCycle(first: Node) -> Bool {
-    // here...
+    var slow: Node? = first
+    var fast: Node? = first
+    
+    while fast != nil && fast!.next != nil {
+        slow = slow?.next
+        fast = fast?.next?.next
+        
+        if slow?.data == fast?.data {
+            return true
+        }
+    }
     return false
 }
 
@@ -41,4 +67,5 @@ node3.next = node4
 node4.next = node5
 node5.next = node3
 
+hasCycleWithDict(first: head)
 hasCycle(first: head)

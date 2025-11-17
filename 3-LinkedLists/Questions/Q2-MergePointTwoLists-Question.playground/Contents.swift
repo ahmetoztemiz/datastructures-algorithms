@@ -49,8 +49,25 @@ func printLinkedList(_ head: Node?) {
 }
 
 func findMerge(headA: Node?, headB: Node?) -> Int? {
-    // Here...
-    return nil
+    guard var nodeA = headA,
+          var nodeB = headB else {
+        return nil
+    }
+    
+    if length(nodeA) == length(nodeB) {
+        nodeA = nodeA.next!
+        nodeB = nodeB.next!
+    } else if length(nodeA) > length(nodeB) {
+        nodeA = nodeA.next!
+    } else {
+        nodeB = nodeB.next!
+    }
+    
+    if nodeA.data == nodeB.data {
+        return nodeA.data
+    } else {
+        return findMerge(headA: nodeA, headB: nodeB)
+    }
 }
 
 // 1 2 3 4 5 6
@@ -69,3 +86,4 @@ printLinkedList(node1)
 printLinkedList(node10)
 
 findMerge(headA: node1, headB: node10)
+findMerge(headA: node10, headB: node1)
