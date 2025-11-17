@@ -20,7 +20,33 @@ import UIKit
 
 func isBalanced(s: String) -> String { // "{[()]}"
     // 🕹 Game on here
-    return "NO"
+    var brackets = [Character]()
+    
+    for c in s {
+        switch c {
+        case "{", "[", "(":
+            brackets.append(c)
+        case "}":
+            if brackets.isEmpty || brackets.last != "{" {
+                return "NO"
+            }
+            brackets.popLast()
+        case "]":
+            if brackets.isEmpty || brackets.last != "[" {
+                return "NO"
+            }
+            brackets.popLast()
+        case ")":
+            if brackets.isEmpty || brackets.last != "(" {
+                return "NO"
+            }
+            brackets.popLast()
+        default:
+            print(c)
+        }
+    }
+    
+    return brackets.isEmpty ? "YES" : "NO"
 }
 
 isBalanced(s: "{[()]}") // Yes
