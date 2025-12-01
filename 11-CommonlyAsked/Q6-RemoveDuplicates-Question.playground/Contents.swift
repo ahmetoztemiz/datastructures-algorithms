@@ -34,6 +34,20 @@ class Node {
 }
 
 func removeDuplictates(_ head: Node?) -> Node? {
+    var uniqueNodes: Set<Int> = []
+    var currentNode: Node? = head
+    var previousNode: Node?
+    
+    while currentNode != nil {
+        if uniqueNodes.contains(currentNode!.data) {
+            previousNode!.next = currentNode!.next
+        } else {
+            uniqueNodes.insert(currentNode!.data)
+            previousNode = currentNode
+        }
+        currentNode = currentNode!.next
+    }
+    
     return nil
 }
 
