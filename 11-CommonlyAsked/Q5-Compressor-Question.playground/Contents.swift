@@ -15,9 +15,27 @@ import UIKit
  */
 
 func compress(_ str: String) -> String {
-    return ""
+    var counter = 0
+    let chars = Array(str)
+    var compressedStr = ""
+    
+    for i in 0..<str.count {
+        counter += 1
+        
+        if i + 1 < str.count {
+            if chars[i] != chars[i + 1] {
+                compressedStr += "\(chars[i])\(counter)"
+                counter = 0
+            }
+        } else {
+            compressedStr += "\(chars[i])\(counter)"
+            counter = 0
+        }
+    }
+    
+    return compressedStr.count < str.count ? compressedStr : str
 }
-
+//
 compress("aaabb")           // a3b2
 compress("aabb")            // aabb
 compress("ab")              // ab
