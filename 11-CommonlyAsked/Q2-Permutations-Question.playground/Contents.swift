@@ -11,8 +11,24 @@ import UIKit
  */
 
 func isPermutation(_ text: String, _ perm: String) -> Bool {
-    return false
+    for c in text {
+        if !perm.contains("c") {
+            return false
+        }
+    }
+    return true
+}
+
+func isPermutationWithSorting(_ text: String, _ perm: String) -> Bool {
+    if text.count != perm.count {
+        return false
+    }
+    
+    return text.sorted() == perm.sorted()
 }
 
 isPermutation("abc", "cba") // true
 isPermutation("abc", "xyz") // false
+
+isPermutationWithSorting("abc", "cba") // true
+isPermutationWithSorting("abc", "xyz") // false
