@@ -14,7 +14,8 @@ import UIKit
  */
 
 func urlify(_ url: String, length: Int) -> String {
-    return ""
+    let urlWords = url.split(separator: " ")
+    return urlWords.joined(separator: "%20")
 }
 
 urlify("My Home Page    ", length: 16) // "My%20Home%20Page"
