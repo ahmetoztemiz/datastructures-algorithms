@@ -12,6 +12,15 @@ import UIKit
  */
 
 func isUnique(_ text: String) -> Bool {
+    var chars = [Character:Int]()
+    
+    for i in text {
+        chars[i, default: 0] += 1
+        if chars[i] ?? 0 > 1 {
+            return false
+        }
+        
+    }
     return true
 }
 
