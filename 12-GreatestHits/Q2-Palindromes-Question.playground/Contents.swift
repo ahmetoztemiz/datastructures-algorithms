@@ -12,7 +12,13 @@ import UIKit
  */
 
 func isPalindrome(_ text: String) -> Bool {
-    return false
+    let textArray = Array(text)
+    let middleIndex = text.count / 2
+    if text.count % 2 == 0 {
+        return Array(textArray[0..<middleIndex]) == Array(textArray[middleIndex...].reversed())
+    } else {
+        return Array(textArray[0..<middleIndex]) == Array(textArray[(middleIndex + 1)...].reversed())
+    }
 }
 
 isPalindrome("abba")    // true
