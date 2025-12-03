@@ -18,7 +18,24 @@ import UIKit
  */
 
 func canWrite(note: String, letters: String) -> Bool {
-    return false
+    var lettersCount: [Character: Int] = [:]
+    
+    for ch in letters {
+        lettersCount[ch, default: 0] += 1
+    }
+    
+    for ch in note {
+        if ch == " " {
+            continue
+        } else if let letterCount = lettersCount[ch],
+           letterCount > 0 {
+            lettersCount[ch, default: 0] -= 1
+        } else {
+            return false
+        }
+    }
+    
+    return true
 }
 
 canWrite(note: "Pay", letters: "yaP")
