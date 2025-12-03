@@ -17,7 +17,7 @@ import UIKit
  */
 
 func isAnagram(_ text: String, _ anagram: String) -> Bool {
-    return false
+    return Array(text).sorted() == Array(anagram).sorted()
 }
 
 isAnagram("arc", "car")         // true
