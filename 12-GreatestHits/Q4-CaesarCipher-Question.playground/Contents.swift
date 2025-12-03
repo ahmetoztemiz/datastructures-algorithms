@@ -28,7 +28,27 @@ import UIKit
 
 class CaesarCipher {
     func encrypt(_ plainText: String) -> String {
-        return ""
+        let offset = 3
+        let letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        var encrptedText = ""
+        var nextIndex = 0
+        let letterIndex: [Character: Int] = letters.reduce(into: [:]) { result, char in
+            result[Character(char)] = nextIndex
+            nextIndex += 1
+        }
+        
+        for ch in Array(plainText) {
+            guard let index = letterIndex[ch] else {
+                if ch.isWhitespace {
+                    encrptedText.append(" ")
+                }
+                continue
+            }
+            let encryptedIndex = index - offset >= 0 ? index - offset : index - offset + letters.count
+            encrptedText.append(letters[encryptedIndex])
+        }
+        
+        return encrptedText
     }
 }
 
