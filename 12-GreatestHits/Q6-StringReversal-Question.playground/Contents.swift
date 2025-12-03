@@ -13,7 +13,20 @@ import UIKit
  */
 
 func reverse(_ text: String) -> String {
-    return ""
+    var textArray = Array(text)
+    var leftIndex = 0
+    var rightIndex = text.count - 1
+    
+    for i in 0..<text.count / 2 {
+        let tempChar = textArray[leftIndex]
+        textArray[leftIndex] = textArray[rightIndex]
+        textArray[rightIndex] = tempChar
+        
+        leftIndex += 1
+        rightIndex -= 1
+    }
+    
+    return String(textArray)
 }
 
 reverse("Hello")    // olleH
