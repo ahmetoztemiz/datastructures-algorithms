@@ -11,3 +11,13 @@ import UIKit
  */
 
 // Create your node here...
+
+class Node {
+    var data: Int
+    var left: Node?
+    var right: Node?
+    
+    init(data: Int) {
+        self.data = data
+    }
+}
