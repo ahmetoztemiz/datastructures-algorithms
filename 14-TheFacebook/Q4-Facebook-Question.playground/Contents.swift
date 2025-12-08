@@ -32,7 +32,10 @@ class Node {
     }
     
     func inOrderTraversal(node: Node?) {
-        // Do your work here...
+        guard let node else { return }
+        inOrderTraversal(node: node.left)
+        print(node.data)
+        inOrderTraversal(node: node.right)
     }
 
 }
